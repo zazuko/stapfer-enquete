@@ -1,0 +1,95 @@
+@base <http://data.stapferenquete.ch/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix emp: <http://example.com/emp/> .
+@prefix dept: <http://example.com/dept/> .
+@prefix schema: <http://schema.org/>.
+@prefix sm: <tag:stardog:api:mapping:> .
+@prefix stapfer: <http://schema.stapferenquete.ch/> .
+@prefix gont: <https://gont.ch/> .
+@prefix gov: <http://gov.genealogy.net/ontology.owl#>.
+@prefix dbo: <http://dbpedia.org/ontology/>.
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+
+<lehrer/{"id_lehrer"}> a schema:Person ;
+    schema:familyName "{\"lehrer_name\"}" ;
+    schema:givenName "{\"lehrer_vorname\"}" ;
+    gont:id "{\"id_lehrer\"}"^^xsd:integer ;
+    gov:hasDenomination "{\"lehrer_konfession\"}" ;
+    gont:municipality "{\"lehrer_herkunft\"}" ;
+    schema:gender "{\"lehrer_geschlecht\"}" ;
+    dbo:age "{\"lehrer_alter\"}"^^xsd:integer ;
+
+
+    sm:map [
+      sm:table "t_lehrer" ;
+    ] .
+
+<schule/{"id_schule"}> a schema:School ;
+    schema:legalName "{\"schule_name\"}" ;
+    gont:id "{\"id_schule\"}"^^xsd:integer ;
+    gov:hasDenomination "{\"schule_konfession\"}" ;
+    stapfer:schoolType "{\"schule_schultypus\"}" ;
+    <ort/{"f_id_ort"}> ;
+    <transkription/{"f_id_transkription"}> ;
+
+    sm:map [
+      sm:table "t_schule" ;
+    ] .
+
+<transkription/{"id_transkription"}> a stapfer:Transcription ;
+    gont:id "{\"id_transkription\"}"^^xsd:integer ;
+    dcterms:issued "{\"transkription_datum_schreiben\"}"^^xsd:date ;
+    dcterms:created "{\"transkription_datum\"}"^^xsd:date ;
+    <ort/{"f_id_ort"}> ;
+    
+    sm:map [
+      sm:table "t_transkription" ;
+    ] .
+
+<ort/{"id_ort"}> a schema:Place ;
+    gont:id "{\"id_ort\"}"^^xsd:integer ;
+    schema:name "{\"ort_name\"}" ;
+    stapfer:lv03_y "{\"ort_laenge\"}"^^xsd:float ;
+    stapfer:lv03_x "{\"ort_breite\"}"^^xsd:float ;
+    stapfer:canton1780 "{\"ort_kanton_1780\"}" ;
+    stapfer:canton1799 "{\"ort_kanton_1799\"}" ;
+    stapfer:cantonName "{\"ort_kanton_aktuell\"}" ;
+    stapfer:districtName "{\"ort_distrikt\"}" ;
+    stapfer:agency "{\"ort_agentschaft\"}" ;
+
+    sm:map [
+      sm:table "t_ort" ;
+    ] .
+
+<frage/{"id_frage"}> a schema:Question ;
+    gont:id "{\"id_frage\"}"^^xsd:integer ;
+    schema:text "{\"frage\"}"@de ;
+    schema:text "{\"frage_f\"}"@fr ;
+    skos:notation "{\"frage_nummer\"}" ;
+    sm:map [
+      sm:table "t_frage" ;
+    ] .
+
+<antwort/{"id_antwort"}> a schema:Answer ;
+    gont:id "{\"id_antwort\"}"^^xsd:integer ;
+    schema:text "{\"antwort\"}" ;
+    schema:comment "{\"antwort_kommentar_oeffentlich\"}" ;
+    stapfer:comment "{\"antwort_randnotiz\"}" ;
+    stapfer:question <frage/{"f_id_frage"}> ;
+    stapfer:transkription <transkription/{"f_id_transkription"}> ;
+
+    sm:map [
+      sm:table "t_antwort" ;
+    ] .
+
+<lehrer/{"f_id_lehrer"}/schule/{"f_id_schule"}> a stapfer:Engagement ;
+    schema:comment "{\"lehrer_lohn_kommentar\"}" ;
+    stapfer:school <schule/{"f_id_schule"}> ;
+    stapfer:teacher <lehrer/{"f_id_lehrer"}>  ;
+
+    sm:map [
+      sm:table "r_lehrer_schule" ;
+    ] .
+
