@@ -42,6 +42,7 @@
     gont:id "{\"id_transkription\"}"^^xsd:integer ;
     dcterms:issued "{\"transkription_datum_schreiben\"}"^^xsd:date ;
     dcterms:created "{\"transkription_datum\"}"^^xsd:date ;
+    schema:mainEntity "{\"transkription_quelle_signatur\"}" ;
     <ort/{"f_id_ort"}> ;
     
     sm:map [
@@ -58,6 +59,7 @@
     stapfer:cantonName "{\"ort_kanton_aktuell\"}" ;
     stapfer:districtName "{\"ort_distrikt\"}" ;
     stapfer:agency "{\"ort_agentschaft\"}" ;
+    gov:hasDenomination "{\"ort_konfession\"}" ;
 
     sm:map [
       sm:table "t_ort" ;
