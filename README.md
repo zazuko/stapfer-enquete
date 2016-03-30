@@ -29,7 +29,7 @@ This imports all data into the graph defined above. You can now export it as Tur
 
 ## Querying
 
-The dump was loaded into [LINDAS](http://lindas-data.ch/). You can query it via SPARQL:
+The dump was loaded into [LINDAS](http://lindas-data.ch/). You can query it via [SPARQL](http://lindas-data.ch/sparql):
 
     SELECT * FROM <http://lindas-data.ch/resource/stapferenquete> WHERE {?s ?p ?o} LIMIT 10
 
