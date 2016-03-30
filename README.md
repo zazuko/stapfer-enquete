@@ -1,4 +1,4 @@
-# Stapfer Enquête in RDF
+# Stapfer Enquête as RDF
 
 This repository contains scripts and a dump of the [Stapfer-Enquête](http://stapferenquete.ch/) as RDF. The export is done from the original MySQL database using the [Stardog](http://stardog.com/) RDF database.
 
@@ -23,6 +23,14 @@ You also need to install the [MySQL Connector/J](https://dev.mysql.com/downloads
 For some reason the materialization does not seem to work for us, we thus copied it via SPARQL.
 
 * Create a database in Stardog
-* Go to the SPARQL console and execute: `ADD <virtual://stapfer> TO <http://example.com/stapfer>`
+* Go to the SPARQL console and execute: `ADD <virtual://stapfer> TO <http://example.com/stapfer>
 
 This imports all data into the graph defined above. You can now export it as Turtle.
+
+## Querying
+
+The dump was loaded into [LINDAS](http://lindas-data.ch/). You can query it via SPARQL:
+
+    SELECT * FROM <http://lindas-data.ch/resource/stapferenquete> WHERE {?s ?p ?o} LIMIT 10
+
+The dataset is around 500'000 triples in total.
