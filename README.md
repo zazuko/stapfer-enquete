@@ -23,7 +23,7 @@ You also need to install the [MySQL Connector/J](https://dev.mysql.com/downloads
 For some reason the materialization does not seem to work for us, we thus copied it via SPARQL.
 
 * Create a database in Stardog
-* Go to the SPARQL console and execute: `ADD <virtual://stapfer> TO <http://example.com/stapfer>
+* Go to the SPARQL console and execute: `ADD <virtual://stapfer> TO <http://example.com/stapfer>`
 
 This imports all data into the graph defined above. You can now export it as Turtle.
 
