@@ -21,7 +21,6 @@
     schema:gender "{\"lehrer_geschlecht\"}" ;
     dbo:age "{\"lehrer_alter\"}"^^xsd:integer ;
 
-
     sm:map [
       sm:table "t_lehrer" ;
     ] .
@@ -31,8 +30,8 @@
     gont:id "{\"id_schule\"}"^^xsd:integer ;
     gov:hasDenomination "{\"schule_konfession\"}" ;
     stapfer:schoolType "{\"schule_schultypus\"}" ;
-    <ort/{"f_id_ort"}> ;
-    <transkription/{"f_id_transkription"}> ;
+    schema:address <ort/{"f_id_ort"}> ;
+    stapfer:transkription <transkription/{"f_id_transkription"}> ;
 
     sm:map [
       sm:table "t_schule" ;
@@ -43,7 +42,7 @@
     dcterms:issued "{\"transkription_datum_schreiben\"}"^^xsd:date ;
     dcterms:created "{\"transkription_datum\"}"^^xsd:date ;
     schema:mainEntity "{\"transkription_quelle_signatur\"}" ;
-    <ort/{"f_id_ort"}> ;
+    schema:address <ort/{"f_id_ort"}> ;
     
     sm:map [
       sm:table "t_transkription" ;
