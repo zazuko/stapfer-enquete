@@ -12,7 +12,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 
-<lehrer/{"id_lehrer"}> a schema:Person ;
+<teacher/{"id_lehrer"}> a schema:Person ;
     schema:familyName "{\"lehrer_name\"}" ;
     schema:givenName "{\"lehrer_vorname\"}" ;
     gont:id "{\"id_lehrer\"}"^^xsd:integer ;
@@ -25,30 +25,30 @@
       sm:table "t_lehrer" ;
     ] .
 
-<schule/{"id_schule"}> a schema:School ;
+<school/{"id_schule"}> a schema:School ;
     schema:legalName "{\"schule_name\"}" ;
     gont:id "{\"id_schule\"}"^^xsd:integer ;
     gov:hasDenomination "{\"schule_konfession\"}" ;
     stapfer:schoolType "{\"schule_schultypus\"}" ;
-    schema:address <ort/{"f_id_ort"}> ;
-    stapfer:transkription <transkription/{"f_id_transkription"}> ;
+    schema:address <location/{"f_id_ort"}> ;
+    stapfer:transkription <transcription/{"f_id_transkription"}> ;
 
     sm:map [
       sm:table "t_schule" ;
     ] .
 
-<transkription/{"id_transkription"}> a stapfer:Transcription ;
+<transcription/{"id_transkription"}> a stapfer:Transcription ;
     gont:id "{\"id_transkription\"}"^^xsd:integer ;
     dcterms:issued "{\"transkription_datum_schreiben\"}"^^xsd:date ;
     dcterms:created "{\"transkription_datum\"}"^^xsd:date ;
     schema:mainEntity "{\"transkription_quelle_signatur\"}" ;
-    schema:address <ort/{"f_id_ort"}> ;
+    schema:address <location/{"f_id_ort"}> ;
     
     sm:map [
       sm:table "t_transkription" ;
     ] .
 
-<ort/{"id_ort"}> a schema:Place ;
+<location/{"id_ort"}> a schema:Place ;
     gont:id "{\"id_ort\"}"^^xsd:integer ;
     schema:name "{\"ort_name\"}" ;
     stapfer:lv03_y "{\"ort_laenge\"}"^^xsd:float ;
@@ -64,7 +64,7 @@
       sm:table "t_ort" ;
     ] .
 
-<frage/{"id_frage"}> a schema:Question ;
+<question/{"id_frage"}> a schema:Question ;
     gont:id "{\"id_frage\"}"^^xsd:integer ;
     schema:text "{\"frage\"}"@de ;
     schema:text "{\"frage_f\"}"@fr ;
@@ -73,22 +73,22 @@
       sm:table "t_frage" ;
     ] .
 
-<antwort/{"id_antwort"}> a schema:Answer ;
+<answer/{"id_antwort"}> a schema:Answer ;
     gont:id "{\"id_antwort\"}"^^xsd:integer ;
     schema:text "{\"antwort\"}" ;
     schema:comment "{\"antwort_kommentar_oeffentlich\"}" ;
     stapfer:comment "{\"antwort_randnotiz\"}" ;
-    stapfer:question <frage/{"f_id_frage"}> ;
-    stapfer:transkription <transkription/{"f_id_transkription"}> ;
+    stapfer:question <question/{"f_id_frage"}> ;
+    stapfer:transkription <transcription/{"f_id_transkription"}> ;
 
     sm:map [
       sm:table "t_antwort" ;
     ] .
 
-<lehrer/{"f_id_lehrer"}/schule/{"f_id_schule"}> a stapfer:Engagement ;
+<teacher/{"f_id_lehrer"}/schule/{"f_id_schule"}> a stapfer:Engagement ;
     schema:comment "{\"lehrer_lohn_kommentar\"}" ;
-    stapfer:school <schule/{"f_id_schule"}> ;
-    stapfer:teacher <lehrer/{"f_id_lehrer"}>  ;
+    stapfer:school <school/{"f_id_schule"}> ;
+    stapfer:teacher <teacher/{"f_id_lehrer"}>  ;
 
     sm:map [
       sm:table "r_lehrer_schule" ;
