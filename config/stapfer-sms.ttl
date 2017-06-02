@@ -85,7 +85,7 @@
       sm:table "t_antwort" ;
     ] .
 
-<teacher/{"f_id_lehrer"}/schule/{"f_id_schule"}> a stapfer:Engagement ;
+<teacher/{"f_id_lehrer"}/school/{"f_id_schule"}> a stapfer:Engagement ;
     schema:comment "{\"lehrer_lohn_kommentar\"}" ;
     stapfer:school <school/{"f_id_schule"}> ;
     stapfer:teacher <teacher/{"f_id_lehrer"}>  ;
