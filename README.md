@@ -20,7 +20,7 @@ You also need to install the [MySQL Connector/J](https://dev.mysql.com/downloads
 * Start Stardog: `stardog-admin server start`
 * Create a database called `stapfer`
 * Add virtual graph: `stardog-admin virtual add stapfer-mysql.properties stapfer-sms.ttl`
-* Materialize the data to the store: `stardog-admin virtual import stapfer stapfer stapfer-mysql.properties stapfer-sms.ttl` 
+* Materialize the data to the store: `stardog-admin virtual import stapfer stapfer-mysql.properties stapfer-sms.ttl` 
 
 To dump it you can use the SPARQL [Graph Store Protocol]():
 
