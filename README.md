@@ -4,7 +4,7 @@ This repository contains scripts and a dump of the [Stapfer-Enquête](http://sta
 
 ## Requirements
 
-The transformation from RDB to RDF is done using the Stardog proprietary [Stardog Mapping Syntax](http://docs.stardog.com/#StardogMapping%20Syntax). It is then materialized using the [Virtual Graph](http://docs.stardog.com/#_materializing_virtual_graphs) feature of Stardog. Note that you need a Stardog Enterprise license to get this to work. 
+The transformation from RDB to RDF is done using the Stardog proprietary [Stardog Mapping Syntax](http://docs.stardog.com/#StardogMapping%20Syntax). It is then materialized using the [Virtual Graph](http://docs.stardog.com/#_materializing_virtual_graphs) feature of Stardog. Note that you need a Stardog Enterprise license to get this to work. In case you want to output the R2RML mapping this can be done with [stardog-admin](http://www.stardog.com/docs/man/virtual-mappings).
 
 You also need to install the [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/), put it into the `server/dbms` directory of your Stardog installation. There is also an appropriate config file for MariaDB.
 
